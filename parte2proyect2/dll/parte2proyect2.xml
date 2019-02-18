@@ -4,6 +4,63 @@
         <name>parte2proyect2</name>
     </assembly>
     <members>
+        <member name="T:parte2proyect2.frmParte2">
+            <summary>
+            DLL destinada a la encriptacion y desencriptacion mediante claves RSA
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._RSA">
+            <summary>
+            Clase principal que nos permite usar el RSA
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._RSAEnc">
+            <summary>
+            Clase principal que nos permite usar el RSA, en este caso lo vamos a usar 
+            para guardar la clave que leamos del XML
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._RSAParams">
+            <summary>
+            Representa los parámetros estándar para el algoritmo System.Security.Cryptography.RSA.
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._publicKey">
+            <summary>
+            Variable donde vamos a guardar la clave publica
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._privateKey">
+            <summary>
+            Variable donde vamos a guardar la clave privada
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._PathArchivos">
+            <summary>
+            Constante con la ruta donde vamos a tener nuestros archivos encriptados
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._XMLExtension">
+            <summary>
+            Constante para el uso de la extension de XML
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._CSPP">
+            <summary>
+            Objeto que contiene el KeyContainer que nos va a servir para 
+            crear claves persistentes
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._KeyName">
+            <summary>
+            Nombr que le vamos a dar al KeyContainerName
+            </summary>
+        </member>
+        <member name="F:parte2proyect2.frmParte2._XMLPublicKey">
+            <summary>
+            Variable donde vamos a guardar la clave RSA publica que vamos a leer del XML
+            </summary>
+        </member>
         <member name="M:parte2proyect2.frmParte2.#ctor">
             <summary>
             Constructor por defecto
@@ -11,24 +68,36 @@
         </member>
         <member name="M:parte2proyect2.frmParte2.frmParte2_Load(System.Object,System.EventArgs)">
             <summary>
-            
+            Evento que se ejecuta cuando carga la parte visual
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="M:parte2proyect2.frmParte2.btnEncrypt_Click(System.Object,System.EventArgs)">
             <summary>
-            
+            Evento que se ejecuta cuando pulsamos el boton de encriptar
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="M:parte2proyect2.frmParte2.btnDecrypt_Click(System.Object,System.EventArgs)">
             <summary>
-            
+            Evento que se ejecuta cuando pulsamos el boton desencriptar
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:parte2proyect2.frmParte2.CreateAndWriteRSAKeys(System.Boolean,System.Boolean)">
+            <summary>
+            Metodo para crear y guardar las claves RSA
+            </summary>
+            <param name="IsPersistent">bool para decidir si queremos que las claves sean persistentes o no</param>
+            <param name="bWriteToXML">bool para decidir si queremos printar las claves en archivos XML</param>
+        </member>
+        <member name="M:parte2proyect2.frmParte2.ReadRSAKeys">
+            <summary>
+            Leemos la clave publica desde un fichero XML
+            </summary>
         </member>
         <member name="F:parte2proyect2.frmParte2.components">
             <summary>

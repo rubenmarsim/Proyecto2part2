@@ -23,17 +23,22 @@ namespace parte2proyect2
         /// </summary>
         RSACryptoServiceProvider _RSA;
         /// <summary>
+        /// Clase principal que nos permite usar el RSA, en este caso lo vamos a usar 
+        /// para guardar la clave que leamos del XML
+        /// </summary>
+        RSACryptoServiceProvider _RSAEnc;
+        /// <summary>
         /// Representa los parámetros estándar para el algoritmo System.Security.Cryptography.RSA.
         /// </summary>
         RSAParameters _RSAParams;
         /// <summary>
         /// Variable donde vamos a guardar la clave publica
         /// </summary>
-        string _publicKey;
+        string _publicKey = string.Empty;
         /// <summary>
         /// Variable donde vamos a guardar la clave privada
         /// </summary>
-        string _privateKey;
+        string _privateKey = string.Empty;
         /// <summary>
         /// Constante con la ruta donde vamos a tener nuestros archivos encriptados
         /// </summary>
@@ -51,6 +56,10 @@ namespace parte2proyect2
         /// Nombr que le vamos a dar al KeyContainerName
         /// </summary>
         const string _KeyName = "Key01";
+        /// <summary>
+        /// Variable donde vamos a guardar la clave RSA publica que vamos a leer del XML
+        /// </summary>
+        string _XMLPublicKey = string.Empty;
         #endregion
 
         #region Constructores
@@ -72,6 +81,7 @@ namespace parte2proyect2
         private void frmParte2_Load(object sender, EventArgs e)
         {
             CreateAndWriteRSAKeys();
+            ReadRSAKeys();
         }
         /// <summary>
         /// Evento que se ejecuta cuando pulsamos el boton de encriptar
@@ -89,7 +99,7 @@ namespace parte2proyect2
         /// <param name="e"></param>
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
-
+            Decrypt();
         }
         #endregion
 
@@ -139,11 +149,20 @@ namespace parte2proyect2
             }            
         }
         /// <summary>
-        /// 
+        /// Leemos la clave publica desde un fichero XML
         /// </summary>
         public void ReadRSAKeys()
         {
-
+            try
+            {
+                _RSAEnc = new RSACryptoServiceProvider();
+                _XMLPublicKey = File.ReadAllText(_PathArchivos + "PublicKey" + _XMLExtension);
+                _RSAEnc.FromXmlString(_XMLPublicKey);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         public void Encrypt()
         {
