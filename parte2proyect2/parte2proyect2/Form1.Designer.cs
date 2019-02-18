@@ -61,6 +61,7 @@
             this.Controls.Add(this.btnEncrypt);
             this.Name = "frmParte2";
             this.Text = "Parte2";
+            this.Load += new System.EventHandler(this.frmParte2_Load);
             this.ResumeLayout(false);
 
         }
