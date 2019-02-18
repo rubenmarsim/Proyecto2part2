@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace parte2proyect2
 {
@@ -60,6 +61,10 @@ namespace parte2proyect2
         /// Variable donde vamos a guardar la clave RSA publica que vamos a leer del XML
         /// </summary>
         string _XMLPublicKey = string.Empty;
+        /// <summary>
+        /// 
+        /// </summary>
+        XmlDocument _xmlDoc;
         #endregion
 
         #region Constructores
@@ -166,6 +171,12 @@ namespace parte2proyect2
         }
         public void Encrypt()
         {
+            ///Instanciamos el xmlDocument
+            _xmlDoc = new XmlDocument();
+            ///Le decimos que conserve los espacios en blanco
+            _xmlDoc.PreserveWhitespace = true;
+            ///Cargamos el archivo Dades.xml
+            _xmlDoc.Load("Dades"+_XMLExtension);
 
         }
         public void Decrypt()
